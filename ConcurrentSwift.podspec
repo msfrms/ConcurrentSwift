@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "ConcurrentSwift"
-  s.version          = "0.1"
+  s.version          = "0.2"
   s.summary          = "Simple work with Future"
   s.homepage         = "https://github.com/msfrms/ConcurrentSwift"
   s.license          = 'Apache License 2.0'
