@@ -105,11 +105,11 @@ final public class Future<R> {
 
     public init(queue: DispatchQueue, complete: @escaping Task) {
         self.queue = queue
-        queue.async {
+        queue.async { [weak self] in
             complete { value in
-                self.value = value
-                self.callbacks.forEach { $0(value) }
-                self.detach()
+                self?.value = value
+                self?.callbacks.forEach { $0(value) }
+                self?.detach()
             }
         }
     }
