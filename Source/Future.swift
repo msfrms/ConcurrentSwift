@@ -101,15 +101,12 @@ final public class Future<R> {
     private var queue: DispatchQueue
     private var callbacks: [(Try<R>) -> ()] = []
 
-    func detach() { self.callbacks = [] }
-
     public init(queue: DispatchQueue, complete: @escaping Task) {
         self.queue = queue
         queue.async { [weak self] in
             complete { value in
                 self?.value = value
                 self?.callbacks.forEach { $0(value) }
-                self?.detach()
             }
         }
     }
